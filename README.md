@@ -1,5 +1,4 @@
-# Projeto​: meta-fabiano
-## Descrião: 
+# Projeto: meta-fabiano
 Sistema de pedidos por cliente com autenticação
 
 # Avaliação WEB II
