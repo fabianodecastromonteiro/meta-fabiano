@@ -1,0 +1,119 @@
+<div class="container" style="padding-top:10px;width:95%">
+	<div ng-if="update">
+		<form>
+		    <h2> Fichas cadastradas </h2><br/>
+	        <div class="form-group">
+				<div class="col-xs-3">
+					<label class="control-label">Data cadastro:</label>
+					<input class="form-control" type="text" date='dd/MM/yyyy' ng-model="update.dtCadastro" />
+				</div>
+				<div class="col-xs-6">
+					<label class="control-label">Observa&ccedil;&atilde;o: </label>
+					<input class="form-control" type="text" ng-model="update.observacao"/>
+				</div>            
+				<div class="col-xs-3">
+					<label class="control-label">Situa&ccedil;&atilde;o: </label> <br />
+					<p><input type="checkbox" ng-model="update.status"> Ativo</p><br/>
+				</div>
+			</div>
+			<footer>
+		        <div class="col-xs-12" style="text-align: right">
+				    <button class="btn btn-default" type="submit" ng-click="cancelar()" >Voltar</button>
+					<button class="btn btn-primary" type="submit" ng-click="salvarFicha(update)">Salvar</button>
+				</div>
+			</footer>
+		</form>
+	</div>
+	<div  ng-if="update == null">
+	    <form class="form-horizontal" novalidate>
+			<fieldset>
+				<legend>
+					<label>Pesquisa</label>
+				</legend>
+				<div class="col-xs-2">
+					<label class="control-label">C&oacute;digo: </label>
+					<input class="form-control" type="text" ng-model="filterId"/>
+				</div>            
+				<div class="col-xs-3">
+					<label class="control-label">Data cadastro (Inicial):</label>
+					<input class="form-control" type="text" date='dd/MM/yyyy' ng-model="filterDtCadastro" />
+				</div>
+				<div class="col-xs-3">
+					<label class="control-label">Data cadastro (Final):</label>
+					<input class="form-control" type="text" date='dd/MM/yyyy' ng-model="filterDtCadastro" />
+				</div>
+	            <div class="col-xs-4" style="text-align: right">
+		            <div class="col-xs-12">
+		            	 <label class="control-label">&nbsp;</label>
+		            </div>
+		            <div class="col-xs-12">
+			            <input class="btn btn-default" style="background-color: #fff; color: #6495ED" value="pasquisar" type="submit" ng-click="pesquisarFichas(filterId)" />
+			            <input class="btn btn-default" style="background-color: #6495ED; color: #fff" value="Adicionar" type="submit" ng-click="adicionarFicha()" />
+		            </div>
+	            </div>
+			</fieldset>
+		</form>	
+		<fieldset>
+			<legend>
+				<label>Lista de fichas</label>
+			</legend>
+		    <table class="table table-condensed table-bordered">
+		        <thead>
+		            <tr>
+		                <!--
+		                <th>
+		                    <button type="button" ng-click="ctrl.expandAll(allExpanded = !allExpanded)">
+		                        <span ng-bind="allExpanded ? '-' : '+'"></span>
+		                    </button>
+		                </th>
+						-->
+						<th style="width:3%;">&nbsp;</th>
+						<th style="width:30%;">C&oacute;digo</th>
+						<th style="width:30%;">Cadastro</th>
+						<th style="width:30%;">Situa&ccedil;&atilde;o</th>
+						<th style="text-align: center">...</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		            <tr ng-repeat-start="ficha in fichas">
+		                <td>
+		                    <button ng-click="expanded = !expanded" expand>
+		                        <span ng-bind="expanded ? '-' : '+'"></span>
+		                    </button>
+		                </td>
+						<td>{{ ficha.id }}</td>
+						<td>{{ ficha.dtCadastro | date:'dd/MM/yyyy' }}</td>
+						<td>{{ ficha.status == true ? 'Ativo' : 'Inativo'}}</td>
+						<td style="text-align: center">
+							<button class="btn btn-info btn-xs" ng-click="editarFicha(ficha)" title="Editar ficha">
+								<i class="glyphicon glyphicon-pencil"></i>
+							</button>
+							<button class="btn btn-info btn-xs" ng-click="editarFicha(ficha)" title="Excluir ficha">
+								<i class="glyphicon glyphicon-remove"></i>
+							</button>
+						</td>
+		            </tr>
+		            <tr ng-repeat-end ng-show="expanded">
+		                <td></td>
+		                <td colspan="5">
+		                    <table class="table table-condensed table-bordered">
+		                        <thead>
+		                            <tr>
+		                                <th style="width:30%;">C&oacute;digo</th>
+		                                <th style="width:70%;">Nome</th>
+		                            </tr>
+		                        </thead>
+		                        <tbody>
+		                            <tr ng-repeat="animal in ficha.animais">
+										<td>{{ animal.id }}</td>
+										<td>{{ animal.nome }}</td>
+		                            </tr>
+		                        </tbody>
+		                    </table>
+		                </td>
+		            </tr>
+		        </tbody>
+			</table>
+		</fieldset>
+	</div>
+</div>

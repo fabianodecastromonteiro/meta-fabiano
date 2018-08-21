@@ -1,0 +1,93 @@
+<div class="container" style="padding-top:10px;width:95%">
+	<div ng-if="update">
+		<form>
+		    <h2> Fichas cadastradas </h2><br/>
+	        <div class="form-group">
+				<div class="col-xs-3">
+					<label class="control-label">Data cadastro:</label>
+					<input class="form-control" type="text" date='dd/MM/yyyy' ng-model="update.dtCadastro" />
+				</div>
+				<div class="col-xs-6">
+					<label class="control-label">Observa&ccedil;&atilde;o: </label>
+					<input class="form-control" type="text" ng-model="update.observacao"/>
+				</div>            
+				<div class="col-xs-3">
+					<label class="control-label">Situa&ccedil;&atilde;o: </label> <br />
+					<p><input type="checkbox" ng-model="update.status"> Ativo</p><br/>
+				</div>
+			</div>
+			<footer>
+		        <div class="col-xs-12" style="text-align: right">
+				    <button class="btn btn-default" type="submit" ng-click="cancelar()" >Voltar</button>
+					<button class="btn btn-primary" type="submit" ng-click="salvarFicha(update)">Salvar</button>
+				</div>
+			</footer>
+		</form>
+	</div>
+	<div  ng-if="update == null">
+	    <form class="form-horizontal" novalidate>
+	        <div class="form-group">
+	            <div class="col-xs-6">
+			    	<h2> Fichas cadastradas </h2> <br/>
+	            </div>
+	            <div class="col-xs-6" style="text-align: right">
+		            <div class="col-xs-12">
+			            <label class="control-label">&nbsp;</label>
+		            </div>
+		            <div class="col-xs-12">
+			            <input class="btn btn-default" style="background-color: #6495ED; color: #fff" value="Adicionar" type="submit" ng-click="adicionarFicha()" />
+		            </div>
+	            </div>
+			</div>
+		</form>	
+	    <form class="form-horizontal" novalidate>
+	        <div class="form-group">
+				<div class="col-xs-2">
+					<label class="control-label">C&oacute;digo: </label>
+					<input class="form-control" type="text" ng-model="filterId"/>
+				</div>            
+				<div class="col-xs-3">
+					<label class="control-label">Data cadastro:</label>
+					<input class="form-control" type="text" date='dd/MM/yyyy' ng-model="filterDtCadastro" />
+				</div>
+	            <div class="col-xs-3">
+		            <div class="col-xs-12">
+			            <label class="control-label">&nbsp;</label>
+		            </div>
+		            <div class="col-xs-12">
+			            <input class="btn btn-default" style="background-color: #fff; color: #6495ED" value="pasquisar" type="submit" ng-click="pesquisarFichas(filterId)" />
+		            </div>
+	            </div>
+			</div>
+		</form>	
+	   	<table style="width:100%"  class="table table-hover">
+	        <thead>
+		        <tr>
+		            <th><h3>C&oacute;digo</h3></th>
+					<th><h3>Cadastro</h3></th>
+					<th><h3>Situa&ccedil;&atilde;o</h3></th>
+					<th style="width: 12%;text-align: center"><h3>...</h3></th>
+				</tr>
+	        </thead>
+	        <tbody>
+				<tr ng-repeat="ficha in fichas">
+					<td>{{ ficha.id }}</td>
+					<td>{{ ficha.dtCadastro | date:'dd/MM/yyyy' }}</td>
+					<td>{{ ficha.status == true ? 'Ativo' : 'Inativo'}}</td>
+					<td style="text-align: center">
+						<button class="btn btn-info btn-xs" ng-click="editarFicha(ficha)" title="Editar ficha">
+							<i class="glyphicon glyphicon-pencil"></i>
+						</button>
+						<button class="btn btn-info btn-xs" ng-click="editarFicha(ficha)" title="Excluir ficha">
+							<i class="glyphicon glyphicon-remove"></i>
+						</button>
+						<button class="btn btn-info btn-xs" ng-click="listaAnimais(ficha.id)" title="Animais da ficha">
+							<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</td>
+				</tr>
+	        </tbody>
+		</table>
+	</div>
+</div>
+

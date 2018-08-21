@@ -1,0 +1,15 @@
+fieldset>table>thead>tr {
+    background-color: #01A9DB;
+}
+fieldset>table>tbody>tr {
+    background-color: #CEECF5;
+    background-color: #E0F2F7;
+}
+fieldset>table>tbody>tr:nth-child(4n+1) {
+    background-color: #8BC4FD;
+    background-color: #A9E2F3;
+}
+fieldset>table>tbody>tr:nth-child(even)>td {
+    border: none;
+    padding: 0;
+}
