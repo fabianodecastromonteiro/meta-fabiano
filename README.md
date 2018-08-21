@@ -34,19 +34,19 @@ mesmo não poderá mais ser atualizado após a emissão.
 ## Acesso
 - Login - Somente usuários do tipo vendedor podem acessar o sistema.
 
-> OBS.: O desenvolvimento deve ser feito utilizando tecnologia Java (1.8+), onde:
+### OBS.: O desenvolvimento deve ser feito utilizando tecnologia Java (1.8+), onde:
 
-### Backend 
+> Backend 
 - Deve ser baseado em API REST onde poderá utilizar JAX-RS ou mesmo spring boot. Seria desejável​ que a API desenvolvida deve ter segurança, seja via
 JWT, OAUTH2.
 
-### Frontend:
+> Frontend:
 - Utilizar algum framework baseado em javascript como (angular, react, etc)
 - Fazer uso de bootstrap para a concepção das telas.
 - Como diferencial​, utilizar um gestor de dependências javascript como por
 exemplo o yarn.
 
-### Outros
+> Outros
 - Empregar para a persistência de dados, banco Mysql.
 - Utilizar boas práticas de Orientação à Objetos, estruturando os pacotes e criando
 das camadas de sistema adequadamente.
