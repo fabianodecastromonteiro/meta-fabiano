@@ -1,4 +1,5 @@
-# meta-fabiano
+# Projeto​: meta-fabiano
+## Descrião: 
 Sistema de pedidos por cliente com autenticação
 
 # Avaliação WEB II
@@ -51,9 +52,8 @@ exemplo o yarn.
 - Utilizar boas práticas de Orientação à Objetos, estruturando os pacotes e criando
 das camadas de sistema adequadamente.
 - Como sistema de versionamento deverá utilizar Git utilizando também de boas
-práticas de versionamento. Crie um branch para cada features desenvolvida. Utilizar
-
-- Git Flow será um diferencial.
+práticas de versionamento. Crie um branch para cada features desenvolvida. 
+- Utilizar Git Flow será um diferencial.
 
 O software deverá ser disponibilizado via github e será avaliado pela estruturação e
 atendimento dos requisitos.
