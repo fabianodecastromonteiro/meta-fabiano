@@ -1,0 +1,21 @@
+<div class="container" style="padding-top:10px;width:95%">
+	<fieldset>
+		<legend>
+			<label>Lista de pedidos</label>
+		</legend>
+	</fieldset>
+ 	<table class="table table-condensed table-bordered">
+		<thead>
+       		<tr>
+				<th style="width:10%">C&oacute;digo</th>
+				<th>Valor</th>
+			</tr>	
+        </thead>
+        <tbody>
+			<tr ng-repeat="pedido in pedidos">
+				<td>{{ pedido.id }}</td>
+				<td style="text-align:right">{{ pedido.id }}</td>
+			</tr>
+		</tbody>
+	</table>
+ </div>

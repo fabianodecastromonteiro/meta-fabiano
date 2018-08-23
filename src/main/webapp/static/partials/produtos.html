@@ -1,0 +1,23 @@
+<div class="container" style="padding-top:10px;width:95%">
+	<fieldset>
+		<legend>
+			<label>Lista de produtos</label>
+		</legend>
+	</fieldset>
+ 	<table class="table table-condensed table-bordered">
+		<thead>
+       		<tr>
+				<th style="width:10%">C&oacute;digo</th>
+				<th style="width:60%">Descri&ccedil;&atilde;o</th>
+				<th>Valor</th>
+			</tr>	
+        </thead>
+        <tbody>
+			<tr ng-repeat="produto in produtos">
+				<td>{{ produto.id }}</td>
+				<td>{{ produto.descricao }}</td>
+				<td style="text-align:right">{{ produto.valor | currency:"R$ " }}</td>
+			</tr>
+		</tbody>
+	</table>
+ </div>

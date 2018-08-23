@@ -3,22 +3,37 @@
 		<legend>
 			<label>Lista de usu&aacute;rios</label>
 		</legend>
+	    <form class="form-horizontal" novalidate>
+	        <div class="form-group">
+	            <div class="col-xs-6">
+		            <div class="col-xs-12">
+			            <label class="control-label">Tipo de usu&aacute;rio: </label>
+		            </div>
+		            <div class="col-xs-12">
+						<select ng-model="usuario.tipo.id" class="form-control" ng-change="usuariosPorTipo(usuario.tipo.id)">
+							<option value=''>Todas os tipos de usu&aacute;rios</option>
+							<option ng-repeat="tipo in tipoUsuarios" value="{{ tipo.id }}" ng-selected="usuario.tipo.id == tipo.id">{{ tipo.descricao }}</option>
+						</select>
+		            </div>
+	            </div>
+			</div>
+		</form>	
 	</fieldset>
-  		<table class="table table-condensed table-bordered">
+  	<table class="table table-condensed table-bordered">
 		<thead>
        		<tr>
+				<th style="width:10%">C&oacute;digo</th>
 				<th style="width:25%">Nome</th>
 				<th>E-mail</th>
 				<th style="width:20%">Senha</th>
-				<th style="width:25%">Tipo</th>
 			</tr>	
         </thead>
         <tbody>
 			<tr ng-repeat="usuario in usuarios">
+				<td>{{ usuario.id }}</td>
 				<td>{{ usuario.nome }}</td>
 				<td>{{ usuario.email }}</td>
 				<td>{{ usuario.senha }}</td>
-				<td>{{ usuario.tipo.descricao }}</td>
 			</tr>
 		</tbody>
 	</table>

@@ -27,7 +27,8 @@ public class PedidoResource {
 
 	@GetMapping("/orders")
 	public List<Pedido> getAll() {
-	    return service.findAll();
+		List<Pedido> lista = service.findAll();
+	    return lista;
 	}
 	
 	@GetMapping("/order/{id}")

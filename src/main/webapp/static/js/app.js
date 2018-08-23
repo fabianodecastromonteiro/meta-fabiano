@@ -23,6 +23,14 @@ angular.module('myApp', ['ngRoute', 'rw.moneymask'])
         templateUrl: 'partials/clientes.html',
         controller: 'clientesController'
     })
+    .when('/produtos', {
+        templateUrl: 'partials/produtos.html',
+        controller: 'produtosController'
+    })
+    .when('/pedidos2', {
+        templateUrl: 'partials/pedidos2.html',
+        controller: 'pedidosController'
+    })
     .when('/pedidos', {
         templateUrl: 'partials/pedidos.html',
         controller: 'pedidosController'
@@ -69,8 +77,22 @@ angular.module('myApp', ['ngRoute', 'rw.moneymask'])
 })
 
 .controller('usuariosController', function ($scope, $http) {
+    $scope.tipoUsuarios = []; 
     $scope.usuarios = []; 
-	getUsuarioDetails();
+    
+    getUserTypesDetails();
+    getUsuarioDetails();
+
+	function getUserTypesDetails() {
+		$http({
+			method : "GET",
+			url : 'usertypes'
+		}).then(function successCallback(response) {
+			$scope.tipoUsuarios = response.data;
+		}, function errorCallback(response) {
+			console.log(response.statusText);
+		});
+	}
 
 	function getUsuarioDetails() {
 		$http({
@@ -82,6 +104,26 @@ angular.module('myApp', ['ngRoute', 'rw.moneymask'])
 			console.log(response.statusText);
 		});
 	}    
+	
+	function getUsuarioPorTipoDetails(typeId) {
+		$http({
+			method : "GET",
+			url : 'usersByType/' + typeId 
+		}).then(function successCallback(response) {
+			$scope.usuarios = response.data;
+		}, function errorCallback(response) {
+			console.log(response.statusText);
+		});
+	}    
+	
+	$scope.usuariosPorTipo = function(id) {
+		if (id == "") {
+			getUsuarioDetails();
+		} else {
+			getUsuarioPorTipoDetails(id);
+		}
+	}
+	
 })
 
 .controller('clientesController', function ($scope, $location, $http) {
@@ -94,6 +136,22 @@ angular.module('myApp', ['ngRoute', 'rw.moneymask'])
 			url : 'customers'
 		}).then(function successCallback(response) {
 			$scope.clientes = response.data;
+		}, function errorCallback(response) {
+			console.log(response.statusText);
+		});
+	}
+})
+
+.controller('produtosController', function ($scope, $location, $http) {
+    $scope.produtos = []; 
+	getProductsDetails();
+
+	function getProductsDetails() {
+		$http({
+			method : "GET",
+			url : 'products'
+		}).then(function successCallback(response) {
+			$scope.produtos = response.data;
 		}, function errorCallback(response) {
 			console.log(response.statusText);
 		});

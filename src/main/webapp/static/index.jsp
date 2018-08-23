@@ -19,11 +19,13 @@
 					<li><a href="#/tipoUsuarios">Tipos de usuário</a></li>
 					<li><a href="#/usuarios">Usuários</a></li>
 					<li><a href="#/clientes">Clientes</a></li>
+					<li><a href="#/produtos">Produtos</a></li>
 					<li ng-show="$root.usuarioLogado != null"><a href="#/empresas">Lojas</a></li>
 					<li ng-show="$root.usuarioLogado.admin == true"><a href="#/fluxoCaixa">Fluxo de Caixa</a></li>
 					<!-- 
 					<li ng-show="$root.usuarioLogado.admin == true"><a href="#/contasPagar">Contas a pagar</a></li>
 					-->
+					<li><a href="#/pedidos2">Pedidos 2</a></li>
 					<li><a href="#/pedidos">Pedidos</a></li>
 					<!-- 
 					<li ng-hide="$root.usuarioLogado != null" style="float:right"><a href="#/login">Login</a></li>

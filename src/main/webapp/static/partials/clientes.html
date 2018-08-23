@@ -1,20 +1,24 @@
 <div class="container" style="padding-top:10px;width:95%">
 	<fieldset>
 		<legend>
-			<label>Lista declientes</label>
+			<label>Lista de clientes</label>
 		</legend>
 	</fieldset>
-  		<table class="table table-condensed table-bordered">
+	<table class="table table-condensed table-bordered">
 		<thead>
        		<tr>
 				<th style="width:10%">C&oacute;digo</th>
-				<th>Nome</th>
+				<th style="width:35%">Nome</th>
+				<th style="width:15%">Cpf/Cnpj</th>
+				<th>Endere&ccedil;o</th>
 			</tr>	
         </thead>
         <tbody>
 			<tr ng-repeat="cliente in clientes">
 				<td>{{ cliente.id }}</td>
 				<td>{{ cliente.nome }}</td>
+				<td>{{ cliente.cpfCnpj }}</td>
+				<td>{{ cliente.endereco }}</td>
 			</tr>
 		</tbody>
 	</table>

@@ -1,5 +1,6 @@
 package br.com.meta.resource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -15,8 +16,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.meta.service.UsuarioService;
 import br.com.meta.model.Usuario;
+import br.com.meta.service.UsuarioService;
 
 @Component
 @RestController
@@ -30,6 +31,11 @@ public class UsuarioResource {
 	    return service.findAll();
 	}
 	
+	@GetMapping("/usersByType/{typeId}")
+	public List<Usuario> GetContaPorEmpresa(@PathVariable("typeId") int typeId) {
+		return getUsersByTypesList(typeId);
+	}
+
 	@GetMapping("/user/{id}")
 	public ResponseEntity<Void> getById(@PathVariable int id) {
 		Usuario usuario = service.findById(id);
@@ -61,4 +67,15 @@ public class UsuarioResource {
 		service.delete(id);
 	}
 	
+	private List<Usuario> getUsersByTypesList(int typeId) {
+		List<Usuario> usuariosPorTipo = new ArrayList<Usuario>();
+		List<Usuario> usuarios = service.findAll();
+		for (Usuario usuario : usuarios) {
+			if (usuario.getTipo().getId() == typeId) {
+				usuariosPorTipo.add(usuario);
+			}
+		}
+		return usuariosPorTipo;
+	}
+
 }
