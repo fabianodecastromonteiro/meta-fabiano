@@ -1,0 +1,21 @@
+<div class="container" style="padding-top:10px;width:95%">
+	<fieldset>
+		<legend>
+			<label>Lista de tipos de usu&aacute;rios</label>
+		</legend>
+	</fieldset>
+  		<table class="table table-condensed table-bordered">
+		<thead>
+       		<tr>
+				<th style="width:10%">C&oacute;digo</th>
+				<th>Descri&ccedil;&atilde;o</th>
+			</tr>	
+        </thead>
+        <tbody>
+			<tr ng-repeat="tipo in tipoUsuarios">
+				<td>{{ tipo.id }}</td>
+				<td>{{ tipo.descricao }}</td>
+			</tr>
+		</tbody>
+	</table>
+ </div>

@@ -11,9 +11,17 @@ angular.module('myApp', ['ngRoute', 'rw.moneymask'])
         templateUrl: 'partials/login.html',
         controller: 'loginController'
     })
+    .when('/tipoUsuarios', {
+        templateUrl: 'partials/tipoUsuarios.html',
+        controller: 'tipoUsuariosController'
+    })
     .when('/usuarios', {
         templateUrl: 'partials/usuarios.html',
         controller: 'usuariosController'
+    })
+    .when('/clientes', {
+        templateUrl: 'partials/clientes.html',
+        controller: 'clientesController'
     })
     .when('/pedidos', {
         templateUrl: 'partials/pedidos.html',
@@ -44,6 +52,22 @@ angular.module('myApp', ['ngRoute', 'rw.moneymask'])
     }
 })
 
+.controller('tipoUsuariosController', function ($scope, $location, $http) {
+    $scope.tipoUsuarios = []; 
+	getUserTypesDetails();
+
+	function getUserTypesDetails() {
+		$http({
+			method : "GET",
+			url : 'usertypes'
+		}).then(function successCallback(response) {
+			$scope.tipoUsuarios = response.data;
+		}, function errorCallback(response) {
+			console.log(response.statusText);
+		});
+	}
+})
+
 .controller('usuariosController', function ($scope, $http) {
     $scope.usuarios = []; 
 	getUsuarioDetails();
@@ -58,6 +82,22 @@ angular.module('myApp', ['ngRoute', 'rw.moneymask'])
 			console.log(response.statusText);
 		});
 	}    
+})
+
+.controller('clientesController', function ($scope, $location, $http) {
+    $scope.clientes = []; 
+	getCustomersDetails();
+
+	function getCustomersDetails() {
+		$http({
+			method : "GET",
+			url : 'customers'
+		}).then(function successCallback(response) {
+			$scope.clientes = response.data;
+		}, function errorCallback(response) {
+			console.log(response.statusText);
+		});
+	}
 })
 
 .controller('pedidosController', function ($scope, $location, $http) {

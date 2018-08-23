@@ -16,15 +16,19 @@
 			<header>
 				<ul>
 					<li class="active"><a href="#/home">Home</a></li>
+					<li><a href="#/tipoUsuarios">Tipos de usuário</a></li>
 					<li><a href="#/usuarios">Usuários</a></li>
+					<li><a href="#/clientes">Clientes</a></li>
 					<li ng-show="$root.usuarioLogado != null"><a href="#/empresas">Lojas</a></li>
 					<li ng-show="$root.usuarioLogado.admin == true"><a href="#/fluxoCaixa">Fluxo de Caixa</a></li>
 					<!-- 
 					<li ng-show="$root.usuarioLogado.admin == true"><a href="#/contasPagar">Contas a pagar</a></li>
 					-->
 					<li><a href="#/pedidos">Pedidos</a></li>
+					<!-- 
 					<li ng-hide="$root.usuarioLogado != null" style="float:right"><a href="#/login">Login</a></li>
 					<li ng-show="$root.usuarioLogado != null" style="float:right"><a ng-click="logout()">Logout</a></li>
+					-->
 				</ul>
 			</header>
 			<div class="conteudo" ng-view></div>

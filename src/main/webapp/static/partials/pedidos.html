@@ -73,14 +73,16 @@
 						<th style="width:10%">C&oacute;digo</th>
 						<th style="width:20%">Vendedor</th>
 						<th style="width:20%">Cliente</th>
+						<!--
 						<th style="width:10%">Cadastro</th>
 						<th style="width:10%">Emiss&atilde;o</th>
 						<th style="width:10%">Faturamento</th>
+						-->
 						<th>Valor total</th>
 		            </tr>
 		        </thead>
 		        <tbody>
-		            <tr ng-repeat-start="pedido in pedidos">
+		            <tr ng-repeat="pedido in pedidos">
 		                <td>
 		                    <button ng-click="expanded = !expanded" expand>
 		                        <span ng-bind="expanded ? '-' : '+'"></span>
@@ -89,9 +91,11 @@
 						<td>{{ pedido.id }}</td>
 						<td>{{ pedido.vendedor.nome }}</td>
 						<td>{{ pedido.cliente.nome }}</td>
+						<!--
 						<td>{{ pedido.dtCadastro | date:'dd/MM/yyyy' }}</td>
 						<td>{{ pedido.dtEmissao | date:'dd/MM/yyyy' }}</td>
 						<td>{{ pedido.dtFaturamento | date:'dd/MM/yyyy' }}</td>
+						-->
 						<td>{{ pedido.valorTotal }}</td>
 		            </tr>
 		            <!--
