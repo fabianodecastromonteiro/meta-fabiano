@@ -15,6 +15,7 @@ public class Application extends SpringBootServletInitializer {
 	public String welcome() {
 		return "index";
 	}
+	
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(Application.class);

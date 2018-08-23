@@ -12,7 +12,7 @@ public class TipoUsuario {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotNull
+	@NotNull
     private String descricao;
 
 	public int getId() {

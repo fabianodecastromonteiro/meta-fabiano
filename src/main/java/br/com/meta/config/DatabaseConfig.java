@@ -16,7 +16,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 @Configuration
 @EnableJpaRepositories(
-		basePackages = "com.ntidive.repository",
+		basePackages = "br.com.meta.repository",
 		entityManagerFactoryRef = "entityManagerFactory",
 		transactionManagerRef = "transactionManager")
 @PropertySource("classpath:persistence-mysql.properties")
@@ -40,7 +40,7 @@ public class DatabaseConfig {
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 		em.setDataSource(dataSource());
-		em.setPackagesToScan(new String[] {"com.ntidive.model"});
+		em.setPackagesToScan(new String[] {"br.com.meta.model"});
 		em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 		em.setJpaProperties(additionalProperties());
 		return em;

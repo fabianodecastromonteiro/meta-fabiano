@@ -1,11 +1,13 @@
 package br.com.meta.model;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -17,6 +19,8 @@ public class Produto {
     @NotNull
     private String descricao;
     private BigDecimal valor;
+    @OneToMany(mappedBy = "pedido")
+    private List<PedidoProduto> pedidoProdutos;
 
 	public int getId() {
 		return id;
@@ -40,6 +44,14 @@ public class Produto {
 
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
+	}
+
+	public List<PedidoProduto> getPedidoProduto() {
+		return pedidoProdutos;
+	}
+
+	public void setPedidoProdutos(List<PedidoProduto> pedidoProdutos) {
+		this.pedidoProdutos = pedidoProdutos;
 	}
 
 }

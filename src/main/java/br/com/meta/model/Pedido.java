@@ -1,7 +1,6 @@
 package br.com.meta.model;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,39 +9,34 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 public class Pedido {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	private Usuario vendedor;
+    private int id;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "vendedor")
+    private Usuario vendedor;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cliente")
+    private Cliente cliente;
 	private Date dtCadastro;
 	private Date dtEmissao;
 	private Date dtFaturamento;
-    private BigDecimal valorTotal;
-    @OneToMany(
-    	mappedBy = "pedido", 
-        cascade = CascadeType.ALL, 
-        orphanRemoval = true
-    )
-	private List<PedidoProduto> itens = new ArrayList<PedidoProduto>();
-
-	public Pedido() {
-		this(0, new Usuario(), new Date(), new Date(), new Date(), new BigDecimal(0));
-	}
-
-	public Pedido(int id, Usuario vendedor, Date dtCadastro, Date dtEmissao, Date dtFaturamento, BigDecimal valorTotal) {
-		super();
-		this.id = id;
-		this.vendedor = vendedor;
-		this.dtCadastro = dtCadastro;
-		this.dtEmissao = dtEmissao;
-		this.dtFaturamento = dtFaturamento;
-		this.valorTotal = valorTotal;
-	}
+    @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL, orphanRemoval = true)
+    @LazyCollection(LazyCollectionOption.TRUE)
+    private List<PedidoProduto> itens;
+	private BigDecimal valorTotal;
 
 	public int getId() {
 		return id;
@@ -58,6 +52,14 @@ public class Pedido {
 
 	public void setVendedor(Usuario vendedor) {
 		this.vendedor = vendedor;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	public Date getDtCadastro() {
@@ -84,20 +86,20 @@ public class Pedido {
 		this.dtFaturamento = dtFaturamento;
 	}
 
-	public BigDecimal getValorTotal() {
-		return valorTotal;
-	}
-
-	public void setValorTotal(BigDecimal valorTotal) {
-		this.valorTotal = valorTotal;
-	}
-
 	public List<PedidoProduto> getItens() {
 		return itens;
 	}
 
 	public void setItens(List<PedidoProduto> itens) {
 		this.itens = itens;
+	}
+
+	public BigDecimal getValorTotal() {
+		return valorTotal;
+	}
+
+	public void setValorTotal(BigDecimal valorTotal) {
+		this.valorTotal = valorTotal;
 	}
 
 }

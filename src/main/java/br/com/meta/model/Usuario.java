@@ -1,9 +1,12 @@
 package br.com.meta.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -18,7 +21,9 @@ public class Usuario {
 	private String email;
     @NotNull
 	private String senha;
-	private TipoUsuario tipo;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "tipo")
+    private TipoUsuario tipo;
 
 	public int getId() {
 		return id;
@@ -57,7 +62,7 @@ public class Usuario {
 	}
 
 	public void setTipo(TipoUsuario tipo) {
-		this.tipo = tipo;
+        this.tipo = tipo;
 	}
 
 }

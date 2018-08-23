@@ -1,5 +1,8 @@
 <div class="container" style="padding: 80px; text-align: center;">
-    <h1>Ficha de animais</h1><br> 
-	<img src="img/logo2.jpg">
-    <h2>Seja bem-vindo!</h2><br> 
+	<img src="img/logo.png">
+    <h2 ng-show="$root.usuarioLogado == null">Seja bem-vindo!</h2><br> 
+    <h3 ng-show="$root.usuarioLogado == null">Entre para ter acesso ao conte&uacute;do.</h3>
+    <br/>
+    <h2 ng-show="$root.usuarioLogado != null">Seja bem-vindo, <b>{{$root.usuarioLogado.nome}}</b></h2>
+    <input class="btn btn-default" value="Efetuar login" type="button" ng-show="$root.usuarioLogado == null" ng-click="efetuarLogin()" />
 </div>
