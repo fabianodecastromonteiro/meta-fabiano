@@ -10,8 +10,11 @@ import br.com.meta.model.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
+	@Query("SELECT u FROM Usuario u WHERE u.id = :id")
+    Usuario findById(@Param("id") int id);
+
 	@Query("SELECT u FROM Usuario u WHERE u.email = :email")
-    Usuario findByEmailReturnStream(@Param("email") String email);
+    Usuario findByEmail(@Param("email") String email);
 
 	@Query("SELECT u FROM Usuario u WHERE u.email = :email AND u.senha = :senha")
     Usuario logon(@Param("email") String email, @Param("senha") String senha);

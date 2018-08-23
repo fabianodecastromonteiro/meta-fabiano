@@ -10,7 +10,7 @@ public interface PedidoService {
 
     Pedido findById(Integer id);
 
-     Pedido save(Pedido entity);
+    Pedido save(Pedido entity);
 
 	Pedido update(Pedido entity);
 

@@ -1,19 +1,25 @@
 <div class="container" style="padding-top:10px;width:95%">
-    <h2> Pessoas cadastradas </h2> <br/>
-    <table style="width:100%"  class="table table-hover">
-        <thead>
-	        <tr>
-	            <th><h3>Nome</h3></th>
-				<th><h3>E-mail</h3></th>
-				<th><h3>Tipo</h3></th>
+	<fieldset>
+		<legend>
+			<label>Lista de usu&aacute;rios</label>
+		</legend>
+	</fieldset>
+  		<table class="table table-condensed table-bordered">
+		<thead>
+       		<tr>
+				<th style="width:25%">Nome</th>
+				<th>E-mail</th>
+				<th style="width:20%">Senha</th>
+				<th style="width:25%">Tipo</th>
 			</tr>	
         </thead>
         <tbody>
 			<tr ng-repeat="usuario in usuarios">
 				<td>{{ usuario.nome }}</td>
 				<td>{{ usuario.email }}</td>
+				<td>{{ usuario.senha }}</td>
 				<td>{{ usuario.tipo.descricao }}</td>
 			</tr>
-        </tbody>
+		</tbody>
 	</table>
-</div>
+ </div>
