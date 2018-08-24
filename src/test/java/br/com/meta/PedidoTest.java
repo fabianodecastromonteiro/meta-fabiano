@@ -25,9 +25,9 @@ public class PedidoTest {
 			List<Pedido> lista = repository.findAll();
 			for (Pedido entity : lista) {
 				System.out.println(entity.getId() + " - " + entity.getVendedor().getNome() + " - " + entity.getCliente().getNome() + " - " + entity.getDtCadastro() + " - " + entity.getDtEmissao() + " - " + entity.getDtFaturamento() + " - " + entity.getValorTotal());
-				for (PedidoProduto entityItem : entity.getItens()) {
-					System.out.println(" -> " + entityItem.getProduto().getId() + " - " + entityItem.getProduto().getDescricao() + " - " + entityItem.getProduto().getValor());
-				}
+//				for (PedidoProduto entityItem : entity.getItens()) {
+//					System.out.println(" -> " + entityItem.getProduto().getId() + " - " + entityItem.getProduto().getDescricao() + " - " + entityItem.getProduto().getValor());
+//				}
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -37,12 +37,12 @@ public class PedidoTest {
 	@Test
 	public void listItems() {
 		try {
-			Pedido entity = repository.findById(1);
+			Pedido entity = repository.findOne(1);
 			System.out.println(entity.getId() + " - " + entity.getVendedor().getNome() + " - " + entity.getCliente().getNome() + " - " + entity.getDtCadastro() + " - " + entity.getDtEmissao() + " - " + entity.getDtFaturamento() + " - " + entity.getValorTotal());
 			//List<PedidoProduto> entityItens = repository.getItensByOrderId(entity.getId());
-			for (PedidoProduto entityItem : entity.getItens()) {
-				System.out.println(" -> " + entityItem.getProduto().getId() + " - " + entityItem.getProduto().getDescricao() + " - " + entityItem.getProduto().getValor());
-			}
+//			for (PedidoProduto entityItem : entity.getItens()) {
+//				System.out.println(" -> " + entityItem.getProduto().getId() + " - " + entityItem.getProduto().getDescricao() + " - " + entityItem.getProduto().getValor());
+//			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
